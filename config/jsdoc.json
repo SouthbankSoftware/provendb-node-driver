@@ -1,0 +1,66 @@
+{
+  "tags": {
+    "allowUnknownTags": false
+  },
+  "source": {
+    "include": "./src",
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "template": "./node_modules/docdash/",
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "docdash": {
+    "static": false,
+    "sort": false,
+    "sectionOrder": [
+      "Classes",
+      "Modules",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces"
+    ],
+    "meta": {
+      "title": "ProvenDB Node Driver",
+      "description": "Documentation for the ProvenDB Node Driver",
+      "keyword": "ProvenDB MongoDB NodeJS"
+    },
+    "search": true,
+    "collapse": false,
+    "wrap": false,
+    "typedefs": true,
+    "scripts": ["./styles/custom.css"],
+    "menu": {
+      "ProvenDB.com": {
+        "href": "https://ProvenDB.com",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "website_link"
+      },
+      "Documentation": {
+        "href": "https://provendb.readme.io/docs/",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "forum_link"
+      },
+      "FAQS": {
+        "href": "https://provendb.readme.io/discuss?isFAQ=true",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "forum_link"
+      }
+    }
+  }
+}
