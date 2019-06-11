@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>services/database/database.js - ProvenDB Node Driver</title>
+    
+    <meta name="description" content="Documentation for the ProvenDB Node Driver" />
+    
+        <meta name="keywords" content="ProvenDB MongoDB NodeJS" />
+        <meta name="keyword" content="ProvenDB MongoDB NodeJS" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://ProvenDB.com" target="_blank" class="menu-item" id="website_link" >ProvenDB.com</a></h2><h2><a href="https://provendb.readme.io/docs/" target="_blank" class="menu-item" id="forum_link" >Documentation</a></h2><h2><a href="https://provendb.readme.io/discuss?isFAQ=true" target="_blank" class="menu-item" id="forum_link" >FAQS</a></h2><h3>Classes</h3><ul><li><a href="module-Database-ProvenDB.html">ProvenDB</a><ul class='methods'><li data-type='method'><a href="module-Database-ProvenDB.html#hideMetadata">hideMetadata</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#showMetadata">showMetadata</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listProvenDBCommands">listProvenDBCommands</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listStorage">listStorage</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.rollback">rollback</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.startBulkLoad">startBulkLoad</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.stopBulkLoad">stopBulkLoad</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.killBulkLoad">killBulkLoad</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStatus">bulkLoadStatus</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.submitProof">submitProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getProof">getProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.verifyProof">verifyProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listProofs">listProofs</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getDocumentProof">getDocumentProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.prepareForget">prepareForget</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.setVersion">setVersion</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getVersion">getVersion</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listVersions">listVersions</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.docHistory">docHistory</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Constants.html">Constants</a></li><li><a href="module-Proof_Constants.html">Proof_Constants</a></li><li><a href="module-Version_Constants.html">Version_Constants</a></li><li><a href="module-Database.html">Database</a></li><li><a href="module-Types_MongoNative.html">Types_MongoNative</a></li><li><a href="module-Types_Proof.html">Types_Proof</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">services/database/database.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * The ProvenDB Database object: similar to the native MongoDB Database object.
+ * @module Database
+ */
+const BulkLoadHelper = require('../../helpers/bulkLoadHelper');
+const UtilHelper = require('../../helpers/utilHelper');
+const Version = require('./functions/version');
+const Proof = require('./functions/proofs');
+const Util = require('./functions/util');
+
+/**
+ * A ProvenDB Database object. This object wraps the existing MongoDB database object and adds aditional ProvenDB specific functionality. See {@link https://provendb.com/gettingStarted|the getting started guide}.
+ * @class
+ * @param {module:MongoDB_Native.Database} dbObject - The MongoDB Node Driver database object.
+ * @param {Object} params - Optional parameters.
+ */
+function ProvenDB(dbObject, params) {
+  if (!dbObject) {
+    this.err = true;
+    this.errMsg = 'ProvenDB requires a MongoDB database object as a parameter.';
+  } else {
+    this.err = false;
+  }
+
+  Object.prototype.extend = function(obj) {
+    for (var i in obj) {
+      this[i] = obj[i];
+    }
+  };
+
+  /**
+   * @type {module:MongoDB_Native.Database}
+   */
+  this.nativeDB = dbObject;
+  const self = this;
+  this.extend(dbObject);
+
+  // Version Functions.
+  this.setVersion = Version.setVersion(self);
+  this.getVersion = Version.getVersion(self);
+  this.docHistory = Version.docHistory(self);
+  this.listVersions = Version.listVersions(self);
+
+  // Proof Functions.
+  this.submitProof = Proof.submitProof(self);
+  this.getProof = Proof.getProof(self);
+  this.listProofs = Proof.listProofs(self);
+  this.getDocumentProof = Proof.getDocumentProof(self);
+  this.verifyProof = Proof.verifyProof(self);
+
+  // Util Functions
+  this.prepareForget = Util.prepareForget(self);
+  this.executeForget = Util.executeForget(self);
+  this.compactVersions = Util.compactVersions(self);
+  /**
+   * Hide ProvenDB metadata in find results.
+   * @returns {Promise&lt;Object>} - Promise resolving the result, or rejecting the error.
+   */
+  this.hideMetadata = () => UtilHelper.hideMetadata(self.nativeDB);
+  /**
+   * Show ProvenDB metadata in find results.
+   * @function
+   * @returns {Promise&lt;Object>} - Promise resolving the result, or rejecting the error.
+   */
+  this.showMetadata = () => UtilHelper.showMetadata(self.nativeDB);
+  /**
+   * Return a list of ProvenDB specific commands.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result (a list of commands) or rejecting an error.
+   * @alias module:Database~ProvenDB.listProvenDBCommands
+   */
+  this.listProvenDBCommands = () =>
+    UtilHelper.listProvenDBCommands(self.nativeDB);
+  /**
+   * Return a list collections and their storage usage.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result (a list of collections) or rejecting an error.
+   * @alias module:Database~ProvenDB.listStorage
+   */
+  this.listStorage = () => UtilHelper.listStorage(self.nativeDB);
+   /**
+   * WARNING: This operation should not be executed unless you are sure you want a rollback. This will rollback any half complete operations to the previous version.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
+   * @alias module:Database~ProvenDB.rollback
+   */
+  this.rollback = () => UtilHelper.rollback(self.nativeDB);
+  /**
+   * Start a bulkLoad.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
+   * @alias module:Database~ProvenDB.startBulkLoad
+   */
+  this.startBulkLoad = () => BulkLoadHelper.startBulkLoad(self.nativeDB);
+  /**
+   * Stop a bulkLoad.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
+   * @alias module:Database~ProvenDB.stopBulkLoad
+   */
+  this.stopBulkLoad = () => BulkLoadHelper.stopBulkLoad(self.nativeDB);
+  /**
+   * WARNIGN: This operation may interrupt another users bulk load in progress. Forcefully stop a bulkLoad, even if you were not the original starter of the bulkLoad.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
+   * @alias module:Database~ProvenDB.killBulkLoad
+   */
+  this.killBulkLoad = () => BulkLoadHelper.killBulkLoad(self.nativeDB);
+  /**
+   * Get the bulk load status.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
+   * @alias module:Database~ProvenDB.bulkLoadStatus
+   */
+  this.bulkLoadStatus = () => BulkLoadHelper.bulkLoadStatus(self.nativeDB);
+
+  return this;
+}
+
+module.exports = ProvenDB;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jun 11 2019 09:56:33 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="./styles/custom.css">
+    
+</body>
+</html>

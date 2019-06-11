@@ -1,7 +1,7 @@
-const ProvenDB = require('./database');
-const CONSTANTS = require('../../constants/constants');
-const PROOF_CONSTANTS = require('../../constants/proof_constants');
-const VERSION_CONSTANTS = require('../../constants/version_constants');
+const ProvenDB = require('../index.js').Database;
+const CONSTANTS = require('../index.js').Constants.General;
+const PROOF_CONSTANTS = require('../index.js').Constants.Proof;
+const VERSION_CONSTANTS = require('../index.js').Constants.Version;
 const { MongoClient } = require('mongodb');
 const moment = require('moment');
 const _ = require('lodash');
@@ -489,13 +489,16 @@ describe('Database Object Tests', () => {
   });
 
   it('perform a rollback.', () => {
-    return provenDB.rollback().then((rollbackRes) => {
-      expect(rollbackRes).toBeTruthy();
-      expect(rollbackRes.ok).toBe(1);
-    }).catch((rollbackErr) => {
-      console.error(rollback);
-      expect(rollbackErr).toBeUndefined();
-    })
+    return provenDB
+      .rollback()
+      .then(rollbackRes => {
+        expect(rollbackRes).toBeTruthy();
+        expect(rollbackRes.ok).toBe(1);
+      })
+      .catch(rollbackErr => {
+        console.error(rollbackErr);
+        expect(rollbackErr).toBeUndefined();
+      });
   });
 
   it.skip('can start and stop a bulk load.', () => {

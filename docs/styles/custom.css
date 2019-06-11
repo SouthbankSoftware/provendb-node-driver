@@ -1,0 +1,88 @@
+body {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#main {
+  background-color: #f0f0f7 !important;
+}
+
+#main>section {
+  background-color: #f0f0f7 !important;
+}
+
+.container-overview {
+  background-color: white;
+}
+
+.container-overview>.description,
+.container-overview>h5,
+.container-overview>table {
+  padding-left: 10px;
+  border-left: none;
+  border-right: none;
+}
+
+.params {
+  background-color: white;
+}
+
+.page-title {
+  background-color: white;
+  margin: 0px !important;
+  padding: 1em 30px !important;
+}
+
+h4.name {
+  background-color: #143d5a;
+  margin-top: 0;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+  border-top: 3em solid #f0f0f7;
+}
+
+.signature {
+  color: #35b3d4;
+}
+
+.type-signature {
+  display: none;
+}
+
+nav {
+  background-color: #1c4d6b;
+  padding-left: 20px;
+  color: white;
+}
+
+nav>h2>a,
+nav>h3 {
+  color: rgba(256, 256, 256, 1) !important;
+}
+
+nav>ul>li>a {
+  color: rgba(256, 256, 256, 0.8) !important;
+}
+
+nav>ul>li>a:hover {
+  color: rgba(256, 256, 256, 1) !important;
+}
+
+nav>ul>li>ul>li>a {
+  color: rgba(256, 256, 256, 0.6) !important;
+  border-left: 1px solid #35b3d4;
+}
+
+nav>ul>li>ul>li>a:hover {
+  color: rgba(256, 256, 256, 0.8) !important;
+}
+
+span.param-type,
+span.param-type>a {
+  color: #35b3d4 !important;
+}
+
+.tag-source>ul>li>a,
+.description>p>a,
+.tag-see>ul>li>a {
+  color: #1c4d6b !important;
+}

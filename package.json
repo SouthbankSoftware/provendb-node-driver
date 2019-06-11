@@ -1,8 +1,9 @@
 {
-  "name": "provendb-node-api",
-  "version": "1.0.0",
+  "name": "@southbanksoftware/provendb-node-driver",
+  "version": "0.1.0",
   "description": "NodeJS for ProvenDb: The Blockchain enabled database.",
   "main": "index.js",
+  "scope": "Southbanksoftware",
   "repository": "https://github/southbanksoftware/provendb-node-api",
   "author": "Michael Harrison",
   "license": "MIT",
