@@ -1,3 +1,26 @@
+/*
+ * provendb-node-driver
+ * Copyright (C) 2019  Southbank Software Ltd.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * @Author: Michael Harrison
+ * @Date:   2019-06-03T14:21:20+10:00
+ * @Last modified by:   Michael Harrison
+ * @Last modified time: 2019-06-11T16:44:46+10:00
+ */
 /**
  * The ProvenDB Database object: similar to the native MongoDB Database object.
  * @module Database
@@ -76,7 +99,7 @@ function ProvenDB(dbObject, params) {
    * @alias module:Database~ProvenDB.listStorage
    */
   this.listStorage = () => UtilHelper.listStorage(self.nativeDB);
-   /**
+  /**
    * WARNING: This operation should not be executed unless you are sure you want a rollback. This will rollback any half complete operations to the previous version.
    * @returns {Promise<Object>} - A promise resolving the database result or rejecting an error.
    * @alias module:Database~ProvenDB.rollback
