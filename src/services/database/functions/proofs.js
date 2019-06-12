@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T14:17:03+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-06-11T16:44:25+10:00
+ * @Last modified time: 2019-06-12T16:41:05+10:00
  */
 const VersionHelper = require('../../../helpers/versionHelper');
 const ProofHelper = require('../../../helpers/proofHelper');
@@ -122,7 +122,7 @@ module.exports = {
     /**
      * Retrieve an existing proof from the database.
      * @param {number|string} [versionOrProofId='Current Version'] - A version number or proofId.
-     * @param {string} [format='json'] - Proof format for return.
+     * @param {module:Proof_Constants.format} [format='json'] - Proof format for return.
      * @param {boolean} [listCollections='false'] - List collections in the proof.
      * @returns {Promise<Object>} - A promise resolving the database result or rejecting an error.
      * @alias module:Database~ProvenDB.getProof
@@ -193,7 +193,7 @@ module.exports = {
     /**
      * Verify a proof exists and is valid on the Blockchain.
      * @param {string} proofId - The ID of the proof to be verified.
-     * @param {string} [format='json'] - The format to return the verified proof in.
+     * @param {module:Proof_Constants.format} [format='json'] - The format to return the verified proof in.
      * @alias module:Database~ProvenDB.verifyProof
      **/
     (proofId, format = PROOF_CONSTANTS.FORMAT.JSON) =>
@@ -213,57 +213,14 @@ module.exports = {
           });
         }
       }),
-  listProofs: self =>
-    /**
-     * List Proofs that exist at a given version or time.
-     * @param {number|string} [dateString='Current Version'] - A version number or proofId.
-     * @returns {Promise<Object>} - A promise resolving the database result or rejecting an error.
-     * @alias module:Database~ProvenDB.listProofs
-     **/
-    dateString =>
-      new Promise((resolve, reject) => {
-        let versionInput = dateString;
-        if (moment(dateString, 'YYYY-MM-DD', true).isValid()) {
-          versionInput = new Date(dateString);
-        } else {
-          versionInput = parseInt(dateString);
-        }
-        VersionHelper.setVersion(self.nativeDB, versionInput)
-          .then(result => {
-            self.nativeDB
-              .collection(CONSTANTS.COLLECTIONS.VERSION_PROOFS)
-              .find({
-                status: PROOF_CONSTANTS.STATUS.VALID,
-                version: { $gte: result.version }
-              })
-              .project({ proof: 0 })
-              .sort({ version: -1 })
-              .limit(1)
-              .toArray((error, result) => {
-                if (error) {
-                  reject({
-                    errMsg: error.message,
-                    err: true
-                  });
-                } else {
-                  resolve(result);
-                }
-              });
-          })
-          .catch(err => {
-            reject({
-              err: true,
-              errMsg: err.message
-            });
-          });
-      }),
   getDocumentProof: self =>
     /**
      * Retrieve an existing proof from the database.
      * @param {string} collection - The collection the document belongs to.
      * @param {Object} [filter={}] - Filter for finding the document.
      * @param {version} [number=Current Version] - The version the document exists in, defaults to current.
-     * @param {string} [format='json'] - The format to return the proof in, defaults to json.
+     * @param {module:Proof_Constants.format} [format='json'] - The format to return the proof in, defaults to json.
+     * @returns {Promise<module:Types_Proof.Proof>} Returns the Proof along with relevant details and information.
      * @alias module:Database~ProvenDB.getDocumentProof
      **/
     (collection, filter = {}, version = null, format = 'json') =>

@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T15:03:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-06-11T16:43:00+10:00
+ * @Last modified time: 2019-06-12T16:40:52+10:00
  */
 const ProvenDB = require('../index.js').Database;
 const CONSTANTS = require('../index.js').Constants.General;
@@ -29,7 +29,7 @@ const { MongoClient } = require('mongodb');
 const moment = require('moment');
 const _ = require('lodash');
 
-const DATABASE = 'stg_mike_stg_test';
+const DATABASE = 'stg_mdbw19';
 const COLLECTION_A = 'unit_tests';
 const COLLECTION_B = 'unit_tests_2';
 
@@ -181,8 +181,8 @@ describe('Database Object Tests', () => {
   it('can list versions within a date range and limit', () => {
     return provenDB
       .listVersions(
-        new Date('2019-06-03T04:41:49.000Z'),
-        new Date('2019-06-05T04:41:49.000Z'),
+        new Date('2019-06-10T04:41:49.000Z'),
+        new Date('2019-06-12T04:41:49.000Z'),
         1
       )
       .then(listVersionsResult => {
@@ -362,36 +362,6 @@ describe('Database Object Tests', () => {
       .catch(err => {
         console.error(err);
         expect(err).toBeUndefined();
-      });
-  });
-
-  it.skip('can list proofs for a version', () => {
-    let listProofsResult;
-    collection.insertOne({ a: 5, b: 5, c: 5 });
-    collection.insertOne({ a: 6, b: 6, c: 6 });
-
-    return provenDB
-      .listProofs(100)
-      .then(listProofsResult => {
-        expect(listProofsResult.ok).toBe(1);
-      })
-      .catch(listProofsErr => {
-        expect(listProofsErr).toBeUndefined();
-      });
-  });
-
-  it.skip('can list proofs for a date string', () => {
-    let listProofsResult;
-    collection.insertOne({ a: 7, b: 7, c: 7 });
-    collection.insertOne({ a: 8, b: 8, c: 8 });
-
-    return provenDB
-      .listProofs('2019-06-04')
-      .then(listProofsResult => {
-        expect(listProofsResult.ok).toBe(1);
-      })
-      .catch(listProofsErr => {
-        expect(listProofsErr).toBeUndefined();
       });
   });
 

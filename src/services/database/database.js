@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T14:21:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-06-11T16:44:46+10:00
+ * @Last modified time: 2019-06-12T16:41:14+10:00
  */
 /**
  * The ProvenDB Database object: similar to the native MongoDB Database object.
@@ -67,7 +67,6 @@ function ProvenDB(dbObject, params) {
   // Proof Functions.
   this.submitProof = Proof.submitProof(self);
   this.getProof = Proof.getProof(self);
-  this.listProofs = Proof.listProofs(self);
   this.getDocumentProof = Proof.getDocumentProof(self);
   this.verifyProof = Proof.verifyProof(self);
 
