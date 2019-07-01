@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T14:21:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-06-12T16:41:14+10:00
+ * @Last modified time: 2019-07-01T16:10:47+10:00
  */
 /**
  * The ProvenDB Database object: similar to the native MongoDB Database object.
