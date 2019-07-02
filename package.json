@@ -1,6 +1,6 @@
 {
   "name": "@southbanksoftware/provendb-node-driver",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "NodeJS for ProvenDb: The Blockchain enabled database.",
   "main": "index.js",
   "scope": "Southbanksoftware",
@@ -10,7 +10,8 @@
   "private": false,
   "jest": {
     "verbose": true,
-    "preset": "@shelf/jest-mongodb"
+    "preset": "@shelf/jest-mongodb",
+    "testEnvironment": "node"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.0.1",
