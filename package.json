@@ -2,11 +2,30 @@
   "name": "@southbanksoftware/provendb-node-driver",
   "version": "0.1.8",
   "description": "NodeJS for ProvenDb: The Blockchain enabled database.",
-  "main": "index.js",
   "scope": "Southbanksoftware",
   "repository": "https://github/southbanksoftware/provendb-node-api",
-  "author": "Michael Harrison",
-  "license": "MIT",
+  "author": {
+    "name": "Michael Harrison",
+    "email": "mike@southbanksoftware.com",
+    "url": "https://provendb.com"
+  },
+  "bugs": "https://github.com/southbanksoftware/provendb-node-driver/issues",
+  "contributors": [],
+  "keywords": [
+    "blockchain",
+    "proof of existence",
+    "provendb",
+    "react",
+    "nodeJS",
+    "driver",
+    "mongodb"
+  ],
+  "engines": {
+    "node": ">= 11.10.1",
+    "npm": ">= 6.8.0",
+    "yarn": ">= 1.13.0"
+  },
+  "license": "AGPL-3.0",
   "private": false,
   "jest": {
     "verbose": true,
@@ -25,7 +44,6 @@
     "moment": "^2.24.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/jsdoc -c ./config/jsdoc.json && cp ./config/styles.css ./docs/styles/custom.css",
     "test": "jest --detectOpenHandles --bail",
     "generate-docs": "node_modules/.bin/jsdoc -c ./config/jsdoc.json && cp ./config/styles.css ./docs/styles/custom.css"
   }
