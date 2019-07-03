@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T15:03:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-07-02T11:03:26+10:00
+ * @Last modified time: 2019-07-03T09:52:24+10:00
  */
 const ProvenDB = require('../index.js').Database;
 const CONSTANTS = require('../index.js').Constants.General;
@@ -484,7 +484,7 @@ describe('Database Object Tests', () => {
 
   it('can start and stop a bulk load.', () => {
     return provenDB
-      .killBulkLoad()
+      .bulkLoadKill()
       .then(result => {
         console.log(result);
         expect(result).toBeTruthy();
@@ -494,7 +494,7 @@ describe('Database Object Tests', () => {
             console.log(result);
             expect(result).toBeTruthy();
             provenDB
-              .startBulkLoad()
+              .bulkLoadStart()
               .then(result => {
                 console.log(result);
                 expect(result).toBeTruthy();
@@ -504,7 +504,7 @@ describe('Database Object Tests', () => {
                     console.log(result);
                     expect(result).toBeTruthy();
                     provenDB
-                      .stopBulkLoad()
+                      .bulkLoadStop()
                       .then(result => {
                         console.log(result);
                         expect(result).toBeTruthy();

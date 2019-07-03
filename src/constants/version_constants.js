@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-07T13:45:29+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-06-11T16:43:52+10:00
+ * @Last modified time: 2019-07-02T13:01:55+10:00
  */
 /**
  * Version Constants.
@@ -36,5 +36,14 @@ module.exports = {
     VALID: 'valid',
     ENDED: 'ended',
     PURGED: 'purged'
+  },
+  /**
+   * Version Type.
+   * @readonly
+   * @enum {string}
+   */
+  TYPE: {
+    USER_DEFINED: 'userDefined',
+    CURRENT: 'current'
   }
 };

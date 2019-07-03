@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>typedefs/Util.js - ProvenDB Node Driver</title>
+    
+    <meta name="description" content="Documentation for the ProvenDB Node Driver" />
+    
+        <meta name="keywords" content="ProvenDB MongoDB NodeJS" />
+        <meta name="keyword" content="ProvenDB MongoDB NodeJS" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://ProvenDB.com" target="_blank" class="menu-item" id="website_link" >ProvenDB.com</a></h2><h2><a href="https://provendb.readme.io/docs/" target="_blank" class="menu-item" id="forum_link" >Documentation</a></h2><h2><a href="https://provendb.readme.io/discuss?isFAQ=true" target="_blank" class="menu-item" id="forum_link" >FAQS</a></h2><h3>Classes</h3><ul><li><a href="module-Database-ProvenDB.html">ProvenDB</a><ul class='methods'><li data-type='method'><a href="module-Database-ProvenDB.html#.setVersion">setVersion</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getVersion">getVersion</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.docHistory">docHistory</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listVersions">listVersions</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.submitProof">submitProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getProof">getProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getDocumentProof">getDocumentProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.verifyProof">verifyProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.prepareForget">prepareForget</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.executeForget">executeForget</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.compactVersions">compactVersions</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#hideMetadata">hideMetadata</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#showMetadata">showMetadata</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listProvenDBCommands">listProvenDBCommands</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listStorage">listStorage</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.rollback">rollback</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStart">bulkLoadStart</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStop">bulkLoadStop</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadKill">bulkLoadKill</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStatus">bulkLoadStatus</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Constants.html">Constants</a></li><li><a href="module-Proof_Constants.html">Proof_Constants</a></li><li><a href="module-Version_Constants.html">Version_Constants</a></li><li><a href="module-Database.html">Database</a></li><li><a href="module-Types_Metadata.html">Types_Metadata</a></li><li><a href="module-Types_MongoNative.html">Types_MongoNative</a></li><li><a href="module-Types_Proof.html">Types_Proof</a></li><li><a href="module-Types_Util.html">Types_Util</a></li><li><a href="module-Types_Version.html">Types_Version</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">typedefs/Util.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * provendb-node-driver
+ * Copyright (C) 2019  Southbank Software Ltd.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see &lt;http://www.gnu.org/licenses/>.
+ *
+ *
+ * @Author: Michael Harrison
+ * @Date:   2019-07-02T13:45:03+10:00
+ * @Last modified by:   Michael Harrison
+ * @Last modified time: 2019-07-02T14:01:10+10:00
+ */
+
+/**
+ * @module Types_Util
+ * @param {module:Constants} Constants - Enumerations and Constants.
+ */
+
+/**
+ * Response from forget commands.
+ * @typedef module:Types_Util.forgetResponse
+ * @property {number} ok - Did command execute without error (1 | 0)
+ * @property {NumberLong} forgetId - ID for the forget.
+ * @property {string} password - Password used to confirm a forget.
+ * @property {Object} forgetSummary - Summary of the forget.
+ * @example
+ * {
+ *  "ok": 1,
+ *  "forgetId": NumberLong(6),
+ *  "password": "ef230d48-7de7-45f2-8aaf-3fa626f19d15"
+ *  "forgetSummary": {
+ *    "documentsToBeForgotten": NumberLong(1),
+ *    "uniqueDocuments": NumberLong(1)
+ *  }
+ * }
+ * @type {object}
+ */
+
+/**
+ * Response from compact commands.
+ * @typedef module:Types_Util.compactResponse
+ * @property {number} ok - Did command execute without error (1 | 0)
+ * @property {NumberLong} proofsDeleted - How many proofs were compacted.
+ * @property {NumberLong} versionsDeleted - How many versions were compacted.
+ * @property {Object} documentsDeleted - Summary of the compact.
+ * @example
+ * {
+ *  "ok": 1,
+ *  "forgetId": NumberLong(6),
+ *  "password": "ef230d48-7de7-45f2-8aaf-3fa626f19d15"
+ *  "forgetSummary": {
+ *    "documentsToBeForgotten": NumberLong(1),
+ *    "uniqueDocuments": NumberLong(1)
+ *  }
+ * }
+ * @type {object}
+ */
+
+/**
+ * Response from metadata commands.
+ * @typedef module:Types_Util.metadataResponse
+ * @property {number} ok - Did command execute without error (1 | 0)
+ * @example
+ * {
+ *  "ok": 1,
+ * }
+ * @type {object}
+ */
+
+/**
+ * Response from listStorage commands.
+ * @typedef module:Types_Util.listStorageResponse
+ * @property {number} ok - Did command execute without error (1 | 0)
+ * @property {Array&lt;Object>} storageList - Array of storage usage.
+ * @example
+ * {
+ *  "ok": 1,
+ *   "storageList": [
+ *     {
+ *       "staff": NumberLong(3334123)
+ *     },
+ *     {
+ *       "offices": NumberLong(3334123)
+ *     }
+ *   ]
+ * }
+ * @type {object}
+ */
+
+/**
+ * Response from rollback commands.
+ * @typedef module:Types_Util.rollbackResponse
+ * @property {number} ok - Did command execute without error (1 | 0)
+ * @property {Array&lt;Object>} version - Array of databases rolled back.
+ * @example
+ * {
+ *  "ok": 1,
+ *   "version": [
+ *     {
+ *       "staff": NumberLong(5)
+ *     },
+ *   ]
+ * }
+ * @type {object}
+ */
+
+/**
+ * Response from bulkLoad commands.
+ * @typedef module:Types_Util.bulkLoadResponse
+ * @property {number} ok - Did command execute without error (1 | 0)
+ * @property {string} [status] - Bulkload status or null.
+ * @example
+ * {
+ *  "ok": 1,
+ *   "status": "on"
+ * }
+ * @type {object}
+ */
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Wed Jul 03 2019 10:48:56 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="./styles/custom.css">
+    
+</body>
+</html>

@@ -1,4 +1,56 @@
-/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>services/database/functions/proofs.js - ProvenDB Node Driver</title>
+    
+    <meta name="description" content="Documentation for the ProvenDB Node Driver" />
+    
+        <meta name="keywords" content="ProvenDB MongoDB NodeJS" />
+        <meta name="keyword" content="ProvenDB MongoDB NodeJS" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://ProvenDB.com" target="_blank" class="menu-item" id="website_link" >ProvenDB.com</a></h2><h2><a href="https://provendb.readme.io/docs/" target="_blank" class="menu-item" id="forum_link" >Documentation</a></h2><h2><a href="https://provendb.readme.io/discuss?isFAQ=true" target="_blank" class="menu-item" id="forum_link" >FAQS</a></h2><h3>Classes</h3><ul><li><a href="module-Database-ProvenDB.html">ProvenDB</a><ul class='methods'><li data-type='method'><a href="module-Database-ProvenDB.html#.setVersion">setVersion</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getVersion">getVersion</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.docHistory">docHistory</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listVersions">listVersions</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.submitProof">submitProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getProof">getProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.getDocumentProof">getDocumentProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.verifyProof">verifyProof</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.prepareForget">prepareForget</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.executeForget">executeForget</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.compactVersions">compactVersions</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#hideMetadata">hideMetadata</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#showMetadata">showMetadata</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listProvenDBCommands">listProvenDBCommands</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.listStorage">listStorage</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.rollback">rollback</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStart">bulkLoadStart</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStop">bulkLoadStop</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadKill">bulkLoadKill</a></li><li data-type='method'><a href="module-Database-ProvenDB.html#.bulkLoadStatus">bulkLoadStatus</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Constants.html">Constants</a></li><li><a href="module-Proof_Constants.html">Proof_Constants</a></li><li><a href="module-Version_Constants.html">Version_Constants</a></li><li><a href="module-Database.html">Database</a></li><li><a href="module-Types_Metadata.html">Types_Metadata</a></li><li><a href="module-Types_MongoNative.html">Types_MongoNative</a></li><li><a href="module-Types_Proof.html">Types_Proof</a></li><li><a href="module-Types_Util.html">Types_Util</a></li><li><a href="module-Types_Version.html">Types_Version</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">services/database/functions/proofs.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
  * provendb-node-driver
  * Copyright (C) 2019  Southbank Software Ltd.
  *
@@ -13,7 +65,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see &lt;http://www.gnu.org/licenses/>.
  *
  *
  * @Author: Michael Harrison
@@ -31,12 +83,12 @@ module.exports = {
   /**
    * Submit a new Proof for anchoring on the blockchain.
    * @param {number} [version=Current Version] - A version number to submit a proof on. Defaults to current version.
-   * @param {Array<string>} [collections='All Collections'] - A list of collections to submit the proof for. Defaulst to all collections.
-   * @returns {Promise<Object>} - A promise resolving the database result or rejecting an error.
+   * @param {Array&lt;string>} [collections='All Collections'] - A list of collections to submit the proof for. Defaulst to all collections.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
    **/
   submitProof: (self, version, collections) =>
     new Promise((resolve, reject) => {
-      if (version && collections) {
+      if (version &amp;&amp; collections) {
         // Submit proof on input version for input collections.
         ProofHelper.submitProof(self.nativeDB, parseInt(version), collections)
           .then(result => {
@@ -49,7 +101,7 @@ module.exports = {
               errMsg: err.message
             });
           });
-      } else if (version && typeof version === CONSTANTS.JS_TYPES.NUMBER) {
+      } else if (version &amp;&amp; typeof version === CONSTANTS.JS_TYPES.NUMBER) {
         // Submit proof on input version for all collections.
         ProofHelper.submitProof(self.nativeDB, parseInt(version))
           .then(result => {
@@ -62,7 +114,7 @@ module.exports = {
               errMsg: err.message
             });
           });
-      } else if (version && typeof version === CONSTANTS.JS_TYPES.OBJECT) {
+      } else if (version &amp;&amp; typeof version === CONSTANTS.JS_TYPES.OBJECT) {
         // Submit proof on current version and input collection list.
         VersionHelper.getVersion(self.nativeDB)
           .then(result => {
@@ -121,7 +173,7 @@ module.exports = {
    * @param {number|string} [versionOrProofId='Current Version'] - A version number or proofId.
    * @param {module:Proof_Constants.format} [format='json'] - Proof format for return.
    * @param {boolean} [listCollections='false'] - List collections in the proof.
-   * @returns {Promise<Object>} - A promise resolving the database result or rejecting an error.
+   * @returns {Promise&lt;Object>} - A promise resolving the database result or rejecting an error.
    **/
   getProof: (
     self,
@@ -131,7 +183,7 @@ module.exports = {
   ) =>
     new Promise((resolve, reject) => {
       if (
-        versionOrProofId &&
+        versionOrProofId &amp;&amp;
         (typeof versionOrProofId === CONSTANTS.JS_TYPES.NUMBER ||
           typeof versionOrProofId === CONSTANTS.JS_TYPES.STRING)
       ) {
@@ -192,7 +244,7 @@ module.exports = {
    **/
   verifyProof: (self, proofId, format = PROOF_CONSTANTS.FORMAT.JSON) =>
     new Promise((resolve, reject) => {
-      if (proofId && typeof proofId === CONSTANTS.JS_TYPES.STRING) {
+      if (proofId &amp;&amp; typeof proofId === CONSTANTS.JS_TYPES.STRING) {
         ProofHelper.verifyProof(self.nativeDB, proofId, format)
           .then(verifyProofResult => {
             resolve(verifyProofResult);
@@ -213,7 +265,7 @@ module.exports = {
    * @param {Object} [filter={}] - Filter for finding the document.
    * @param {version} [number=Current Version] - The version the document exists in, defaults to current.
    * @param {module:Proof_Constants.format} [format='json'] - The format to return the proof in, defaults to json.
-   * @returns {Promise<module:Types_Proof.Proof>} Returns the Proof along with relevant details and information.
+   * @returns {Promise&lt;module:Types_Proof.Proof>} Returns the Proof along with relevant details and information.
    **/
   getDocumentProof: (
     self,
@@ -265,3 +317,32 @@ module.exports = {
       }
     })
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Wed Jul 03 2019 10:48:56 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="./styles/custom.css">
+    
+</body>
+</html>

@@ -19,11 +19,11 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-04T16:42:12+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-06-11T16:44:01+10:00
+ * @Last modified time: 2019-07-03T09:52:24+10:00
  */
 const CONSTANTS = require('../constants/constants');
 module.exports = {
-  startBulkLoad: dbObject =>
+  bulkLoadStart: dbObject =>
     new Promise((resolve, reject) => {
       dbObject
         .command({ bulkLoad: CONSTANTS.BULKLOAD.START })
@@ -34,7 +34,7 @@ module.exports = {
           reject(err);
         });
     }),
-  stopBulkLoad: dbObject =>
+  bulkLoadStop: dbObject =>
     new Promise((resolve, reject) => {
       dbObject
         .command({ bulkLoad: CONSTANTS.BULKLOAD.STOP })
@@ -46,7 +46,7 @@ module.exports = {
           reject(err);
         });
     }),
-  killBulkLoad: dbObject =>
+  bulkLoadKill: dbObject =>
     new Promise((resolve, reject) => {
       dbObject
         .command({ bulkLoad: CONSTANTS.BULKLOAD.KILL })

@@ -1,6 +1,6 @@
 {
   "name": "@southbanksoftware/provendb-node-driver",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "NodeJS for ProvenDb: The Blockchain enabled database.",
   "main": "index.js",
   "scope": "Southbanksoftware",
@@ -25,6 +25,7 @@
     "moment": "^2.24.0"
   },
   "scripts": {
+    "start": "node_modules/.bin/jsdoc -c ./config/jsdoc.json && cp ./config/styles.css ./docs/styles/custom.css",
     "test": "jest --detectOpenHandles --bail",
     "generate-docs": "node_modules/.bin/jsdoc -c ./config/jsdoc.json && cp ./config/styles.css ./docs/styles/custom.css"
   }
