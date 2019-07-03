@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * @description This driver takes the standard MongoDB Node Driver {@link https://mongodb.github.io/node-mongodb-native/} and extends the functioanlity to support ProvenDB usage. Please Note, this driver is still being developed.
  * @author Michael Harrison
- * @version 0.1.7
+ * @version 0.1.8
  * @see module:Database~ProvenDB
  * @see https://provendb.readme.io
  * @example
