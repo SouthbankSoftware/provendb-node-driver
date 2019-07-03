@@ -8,7 +8,7 @@
 </div>
 <div align="center" style="display: flex; flex-direction: row; justify-content: space-around">
 
-[![Dependencies](https://img.shields.io/david/SouthbankSoftware/provendb-node-api.svg)](https://img.shields.io/david/SouthbankSoftware/provendb-node-api.svg) [![Open Issues](https://img.shields.io/github/issues-raw/SouthbankSoftware/provendb-node-api.svg)](https://img.shields.io/github/issues-raw/SouthbankSoftware/provendb-node-api.svg) [![Last Commit](https://img.shields.io/github/last-commit/Southbanksoftware/provendb-node-api.svg)](https://img.shields.io/github/last-commit/Southbanksoftware/provendb-node-api.svg)
+[![Dependencies](https://img.shields.io/david/SouthbankSoftware/provendb-node-driver.svg)](https://img.shields.io/david/SouthbankSoftware/provendb-node-driver.svg) [![Open Issues](https://img.shields.io/github/issues-raw/SouthbankSoftware/provendb-node-driver.svg)](https://img.shields.io/github/issues-raw/SouthbankSoftware/provendb-node-driver.svg) [![Last Commit](https://img.shields.io/github/last-commit/Southbanksoftware/provendb-node-driver.svg)](https://img.shields.io/github/last-commit/Southbanksoftware/provendb-node-driver.svg)
 </div>
 
 **NOTE** - This driver is still very much a work in progress, please be patient with us!
