@@ -1,6 +1,6 @@
 {
   "name": "@southbanksoftware/provendb-node-driver",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "NodeJS for ProvenDb: The Blockchain enabled database.",
   "scope": "Southbanksoftware",
   "repository": "https://github/southbanksoftware/provendb-node-driver",

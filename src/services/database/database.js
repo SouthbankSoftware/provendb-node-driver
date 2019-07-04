@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T14:21:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-07-03T10:31:09+10:00
+ * @Last modified time: 2019-07-04T11:42:44+10:00
  */
 /**
  * The ProvenDB Database object abc: similar to the native MongoDB Database object.
@@ -47,6 +47,12 @@ const Util = require('./functions/util');
  * collection = pdb.collection('myCollection');
  */
 
+const extend = function(obj, obj2) {
+  for (var i in obj) {
+    obj2[i] = obj[i];
+  }
+};
+
 function ProvenDB(dbObject) {
   if (!dbObject) {
     this.err = true;
@@ -55,19 +61,13 @@ function ProvenDB(dbObject) {
     this.err = false;
   }
 
-  Object.prototype.extend = function(obj) {
-    for (var i in obj) {
-      this[i] = obj[i];
-    }
-  };
-
   /**
    * @type {MongoDB_Native.Database}
    * @see https://mongodb.github.io/node-mongodb-native/3.2/api/Db.html
    */
   this.nativeDB = dbObject;
+  extend(dbObject, this);
   const self = this;
-  this.extend(dbObject);
 
   // Version Functions.
   /**
