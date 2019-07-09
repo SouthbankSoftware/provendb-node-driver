@@ -30,14 +30,22 @@ body {
 .page-title {
   background-color: white;
   margin: 0px !important;
-  padding: 1em 30px !important;
+  padding: 0.5em 15px !important;
 }
 
 h4.name {
-  background-color: #143d5a;
+  background-color: #1a4c68;
   margin-top: 0;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
   border-top: 3em solid #f0f0f7;
+}
+
+h3 {
+  padding-left: 10px;
+}
+
+article {
+  padding-right: 20px;
 }
 
 .signature {
@@ -49,7 +57,7 @@ h4.name {
 }
 
 nav {
-  background-color: #1c4d6b;
+  background-color: #1a4c68;
   padding-left: 20px;
   color: white;
 }
@@ -85,4 +93,22 @@ span.param-type>a {
 .description>p>a,
 .tag-see>ul>li>a {
   color: #1c4d6b !important;
+}
+
+.details {
+  padding-right: 10px;
+}
+
+#nav-search {
+  border: none;
+  border-radius: 20px !important;
+  margin-bottom: 20px;
+}
+
+nav>h2 {
+  font-size: 18px;
+}
+
+header>h2 {
+  margin-bottom: 20px;
 }

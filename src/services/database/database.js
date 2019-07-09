@@ -31,6 +31,12 @@ const Version = require('./functions/version');
 const Proof = require('./functions/proofs');
 const Util = require('./functions/util');
 
+const extend = function(obj, obj2) {
+  for (var i in obj) {
+    obj2[i] = obj[i];
+  }
+};
+
 /**
  * A ProvenDB Database object. This object wraps the existing MongoDB database object and adds aditional ProvenDB specific functionality. See {@link https://provendb.com/gettingStarted} the getting started guide for help.
  * @class
@@ -46,13 +52,6 @@ const Util = require('./functions/util');
  * pdb = new ProvenDB(db);
  * collection = pdb.collection('myCollection');
  */
-
-const extend = function(obj, obj2) {
-  for (var i in obj) {
-    obj2[i] = obj[i];
-  }
-};
-
 function ProvenDB(dbObject) {
   if (!dbObject) {
     this.err = true;
