@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T15:03:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-07-03T09:52:24+10:00
+ * @Last modified time: 2020-01-03T10:55:47+11:00
  */
 const ProvenDB = require('../index.js').Database;
 const CONSTANTS = require('../index.js').Constants.General;
@@ -29,7 +29,7 @@ const { MongoClient } = require('mongodb');
 const moment = require('moment');
 const _ = require('lodash');
 
-const DATABASE = 'dev_mike_dev';
+const DATABASE = 'stg_ela-mike';
 const COLLECTION_A = 'unit_tests';
 const COLLECTION_B = 'unit_tests_2';
 
@@ -42,7 +42,10 @@ describe('Database Object Tests', () => {
   let collection;
 
   beforeAll(async () => {
-    connection = await MongoClient.connect(process.env.PDB_PROXY_URI);
+    connection = await MongoClient.connect(process.env.PDB_PROXY_URI, {
+      ssl: true,
+      sslValidate: false
+    });
     db = await connection.db(DATABASE);
     collection = await db.collection(COLLECTION_A);
     collection = await db.collection(COLLECTION_B);

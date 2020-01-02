@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T14:21:20+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-07-04T11:42:44+10:00
+ * @Last modified time: 2020-01-03T10:50:16+11:00
  */
 /**
  * The ProvenDB Database object abc: similar to the native MongoDB Database object.
@@ -134,6 +134,7 @@ function ProvenDB(dbObject) {
    * Submit a new Proof for anchoring on the blockchain.
    * @param {number} [version=Current Version] - A version number to submit a proof on. Defaults to current version.
    * @param {Array<string>} [collections='All Collections'] - A list of collections to submit the proof for. Defaulst to all collections.
+   * @param {string} [type='BTC'] - The anchor type, BTC for bitcoin or ETH for ethereum.
    * @returns {Promise<module:Types_Proof.submitProofResponse>} - A promise resolving the database result or rejecting an error.
    * @alias module:Database~ProvenDB.submitProof
    * @example
@@ -143,8 +144,8 @@ function ProvenDB(dbObject) {
    *      console.error(err);
    *    })
    */
-  this.submitProof = (version, collections) =>
-    Proof.submitProof(self, version, collections);
+  this.submitProof = (version, collections, type) =>
+    Proof.submitProof(self, version, collections, type);
   /**
    * Retrieve an existing proof from the database.
    * @param {number|string} [versionOrProofId='Current Version'] - A version number or proofId.

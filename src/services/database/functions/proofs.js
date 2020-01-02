@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-03T14:17:03+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2019-07-02T14:02:34+10:00
+ * @Last modified time: 2020-01-03T10:51:58+11:00
  */
 const VersionHelper = require('../../../helpers/versionHelper');
 const ProofHelper = require('../../../helpers/proofHelper');
@@ -32,13 +32,19 @@ module.exports = {
    * Submit a new Proof for anchoring on the blockchain.
    * @param {number} [version=Current Version] - A version number to submit a proof on. Defaults to current version.
    * @param {Array<string>} [collections='All Collections'] - A list of collections to submit the proof for. Defaulst to all collections.
+   * @param {string} [type='BTC'] - Anchor type, either BTC or ETH.
    * @returns {Promise<Object>} - A promise resolving the database result or rejecting an error.
    **/
-  submitProof: (self, version, collections) =>
+  submitProof: (self, version, collections, type) =>
     new Promise((resolve, reject) => {
       if (version && collections) {
         // Submit proof on input version for input collections.
-        ProofHelper.submitProof(self.nativeDB, parseInt(version), collections)
+        ProofHelper.submitProof(
+          self.nativeDB,
+          parseInt(version),
+          collections,
+          type
+        )
           .then(result => {
             resolve(result);
           })
@@ -51,7 +57,12 @@ module.exports = {
           });
       } else if (version && typeof version === CONSTANTS.JS_TYPES.NUMBER) {
         // Submit proof on input version for all collections.
-        ProofHelper.submitProof(self.nativeDB, parseInt(version))
+        ProofHelper.submitProof(
+          self.nativeDB,
+          parseInt(version),
+          collections,
+          type
+        )
           .then(result => {
             resolve(result);
           })
@@ -66,7 +77,7 @@ module.exports = {
         // Submit proof on current version and input collection list.
         VersionHelper.getVersion(self.nativeDB)
           .then(result => {
-            ProofHelper.submitProof(self.nativeDB, result.version)
+            ProofHelper.submitProof(self.nativeDB, result.version, null, type)
               .then(result => {
                 resolve(result);
               })
@@ -89,7 +100,12 @@ module.exports = {
         // Empty params, get current version and submitProof.
         VersionHelper.getVersion(self.nativeDB)
           .then(result => {
-            ProofHelper.submitProof(self.nativeDB, result.version)
+            ProofHelper.submitProof(
+              self.nativeDB,
+              result.version,
+              collections,
+              type
+            )
               .then(result => {
                 resolve(result);
               })

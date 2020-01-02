@@ -1176,7 +1176,7 @@ collection = pdb.collection('myCollection');</code></pre>
 
     
 
-    <h4 class="name" id=".submitProof"><span class="type-signature">(static) </span>submitProof<span class="signature">(version<span class="signature-attributes">opt</span>, collections<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="module-Types_Proof.html#.submitProofResponse">module:Types_Proof.submitProofResponse</a>>}</span></h4>
+    <h4 class="name" id=".submitProof"><span class="type-signature">(static) </span>submitProof<span class="signature">(version<span class="signature-attributes">opt</span>, collections<span class="signature-attributes">opt</span>, type<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="module-Types_Proof.html#.submitProofResponse">module:Types_Proof.submitProofResponse</a>>}</span></h4>
 
     
 
@@ -1188,7 +1188,7 @@ collection = pdb.collection('myCollection');</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line146">line 146</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -1354,6 +1354,45 @@ collection = pdb.collection('myCollection');</code></pre>
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'BTC'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>The anchor type, BTC for bitcoin or ETH for ethereum.</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -1416,7 +1455,7 @@ collection = pdb.collection('myCollection');</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line162">line 162</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line163">line 163</a>
     </li></ul></dd>
     
 
@@ -1686,7 +1725,7 @@ collection = pdb.collection('myCollection');</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line179">line 179</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -1986,7 +2025,7 @@ collection = pdb.collection('myCollection');</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line194">line 194</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line195">line 195</a>
     </li></ul></dd>
     
 
@@ -2210,7 +2249,7 @@ collection = pdb.collection('myCollection');</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line218">line 218</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -2551,7 +2590,7 @@ proofs those documents exist in, after being prepared it can be executed with ex
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line248">line 248</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -2751,7 +2790,7 @@ proofs those documents exist in, after being prepared it can be executed with ex
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line263">line 263</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line264">line 264</a>
     </li></ul></dd>
     
 
@@ -2943,7 +2982,7 @@ proofs those documents exist in, after being prepared it can be executed with ex
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line285">line 285</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line286">line 286</a>
     </li></ul></dd>
     
 
@@ -3078,7 +3117,7 @@ will not contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line305">line 305</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line306">line 306</a>
     </li></ul></dd>
     
 
@@ -3213,7 +3252,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line317">line 317</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line318">line 318</a>
     </li></ul></dd>
     
 
@@ -3333,7 +3372,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line330">line 330</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line331">line 331</a>
     </li></ul></dd>
     
 
@@ -3453,7 +3492,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line342">line 342</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line343">line 343</a>
     </li></ul></dd>
     
 
@@ -3573,7 +3612,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line354">line 354</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -3693,7 +3732,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line366">line 366</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -3813,7 +3852,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line378">line 378</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line379">line 379</a>
     </li></ul></dd>
     
 
@@ -3933,7 +3972,7 @@ will contain metadata.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line390">line 390</a>
+        <a href="services_database_database.js.html">services/database/database.js</a>, <a href="services_database_database.js.html#line391">line 391</a>
     </li></ul></dd>
     
 
@@ -4056,7 +4095,7 @@ will contain metadata.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 09 2019 15:20:51 GMT+1000 (Australian Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Fri Jan 03 2020 10:56:29 GMT+1100 (Australian Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
