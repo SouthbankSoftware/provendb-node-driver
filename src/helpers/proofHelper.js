@@ -19,7 +19,7 @@
  * @Author: Michael Harrison
  * @Date:   2019-06-04T15:17:40+10:00
  * @Last modified by:   Michael Harrison
- * @Last modified time: 2020-01-03T10:50:52+11:00
+ * @Last modified time: 2020-01-03T11:29:04+11:00
  */
 module.exports = {
   submitProof: (dbObject, versionNumber, collections, type) =>
@@ -31,7 +31,7 @@ module.exports = {
         params.collections = collections;
       }
       if (type) {
-        params.type = type;
+        params.anchorType = type;
       }
       dbObject.command(params, (setVersionErr, setVersionRes) => {
         if (setVersionErr) {
