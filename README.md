@@ -11,7 +11,7 @@
 [![Dependencies](https://img.shields.io/david/SouthbankSoftware/provendb-node-driver.svg)](https://img.shields.io/david/SouthbankSoftware/provendb-node-driver.svg) [![Open Issues](https://img.shields.io/github/issues-raw/SouthbankSoftware/provendb-node-driver.svg)](https://img.shields.io/github/issues-raw/SouthbankSoftware/provendb-node-driver.svg) [![Last Commit](https://img.shields.io/github/last-commit/Southbanksoftware/provendb-node-driver.svg)](https://img.shields.io/github/last-commit/Southbanksoftware/provendb-node-driver.svg)
 </div>
 
-**NOTE** - This driver is still very much a work in progress, please be patient with us!
+**NOTE** - This driver is deprecated, we recommend using the official MongoDB nodeJS driver to work with ProvendDB with NodeJS.
 
 *More information and detailed documentation for ProvenDB Application can be found on the **[ProvenDB ReadMe.IO](https://provendb.readme.io/docs)***
 
